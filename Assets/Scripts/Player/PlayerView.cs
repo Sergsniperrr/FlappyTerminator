@@ -20,20 +20,20 @@ public class PlayerView : MonoBehaviour
 
     public void ShowExplosion()
     {
-        _jet?.Hide();
+        _jet.Hide();
         _animator.Play(AnimationData.s_explosion);
     }
 
     public void Hide()
     {
         _renderer.enabled = false;
-        _jet?.Hide();
+        _jet.Hide();
     }
 
     public void Show()
     {
         _renderer.enabled = true;
         _animator.Play(AnimationData.s_idle);
-        _jet?.Show();
+        _jet.Show();
     }
 }

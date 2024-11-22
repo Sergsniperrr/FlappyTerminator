@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Rocket : MonoBehaviour
+public class Rocket : MonoBehaviour, IRemovable
 {
     [SerializeField] private float _speed;
 

@@ -76,7 +76,7 @@ public class Enemy : SpawnableObject<Enemy>
 
         yield return waitForShowScore;
 
-        Die();
+        Remove();
     }
 
     private IEnumerator Shoot()

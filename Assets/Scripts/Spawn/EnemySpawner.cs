@@ -7,8 +7,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private ObjectPool<Enemy> _pool;
     [SerializeField] private float _delay;
 
-    private float _maxCoordinateY = 3.78f;
-    private float _minCoordinateY = -2.6f;
+    private readonly float _maxCoordinateY = 3.78f;
+    private readonly float _minCoordinateY = -2.6f;
 
     public event Action<Enemy> Spawned;
     public event Action<Enemy> Removed;

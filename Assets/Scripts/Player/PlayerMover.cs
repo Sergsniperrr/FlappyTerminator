@@ -11,13 +11,13 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _maxRotationZ;
     [SerializeField] private float _minRotationZ;
 
+    private readonly float _maxCoordinateY = 3.78f;
+
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
     private Quaternion _maxRotation;
     private Quaternion _minRotation;
     private Vector3 _startPosition = new(-2f, 0.5f, 0f);
-
-    private float _maxCoordinateY = 3.78f;
 
     private void Awake()
     {

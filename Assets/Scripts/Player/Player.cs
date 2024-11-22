@@ -20,6 +20,19 @@ public class Player : MonoBehaviour
         Die();
     }
 
+    public void AllReset()
+    {
+        _mover.EnablePhisic();
+        _mover.ResetPosition();
+        _mover.ResetVelocityOnY();
+        _view.Show();
+    }
+
+    public void Show()
+    {
+        _view.Show();
+    }
+
     private void Die()
     {
         StartCoroutine(HandleDie());
@@ -38,18 +51,5 @@ public class Player : MonoBehaviour
         _view.Hide();
 
         GameOver?.Invoke();
-    }
-
-    public void AllReset()
-    {
-        _mover.EnablePhisic();
-        _mover.ResetPosition();
-        _mover.ResetVelocityOnY();
-        _view.Show();
-    }
-
-    public void Show()
-    {
-        _view.Show();
     }
 }

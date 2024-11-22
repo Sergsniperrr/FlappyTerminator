@@ -53,6 +53,6 @@ public class ObjectPool<T> : MonoBehaviour where T : SpawnableObject<T>
 
         foreach (var child in childTransforms)
             if (child.TryGetComponent(out ISpawnable spawnableObject))
-                spawnableObject.Die();
+                spawnableObject.Remove();
     }
 }

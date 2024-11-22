@@ -1,5 +1,5 @@
 public interface ISpawnable
 {
-    void Die();
+    void Remove();
     void Explode();
 }

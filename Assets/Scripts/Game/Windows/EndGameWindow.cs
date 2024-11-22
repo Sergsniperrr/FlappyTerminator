@@ -13,11 +13,6 @@ public class EndGameWindow : Window
         _restartButton.onClick.AddListener(OnRestartButtonClick);
 
         base.OnEnable();
-
-
-
-        _restartButton.TryGetComponent(out GameButton button);
-        Debug.Log(button.GetType());
     }
 
     protected override void OnDisable()

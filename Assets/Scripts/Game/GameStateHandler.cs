@@ -6,10 +6,9 @@ public class GameStateHandler : MonoBehaviour
     [SerializeField] private PauseWindow _pauseWindow;
     [SerializeField] private EndGameWindow _endGameWindow;
 
-    [SerializeField] private ObjectsCleaner _cleaner;
+    [SerializeField] private Reset _cleaner;
     [SerializeField] private Player _player;
     [SerializeField] private PlayerInput _input;
-    [SerializeField] private Counter _score;
 
     private void Awake()
     {
@@ -21,14 +20,14 @@ public class GameStateHandler : MonoBehaviour
         _player.GameOver += OpenEndGameWindow;
 
         _startWindow.StartButtonClicked += StartGame;
-        _startWindow.ExitButtonClicked += ExitGame;
+        _startWindow.ExitButtonClicked += Exit;
 
-        _pauseWindow.ResumeButtionClicked += ResumeGame;
-        _pauseWindow.RestartButtionClicked += RestartGame;
-        _pauseWindow.ExitButtonClicked += ExitGame;
+        _pauseWindow.ResumeButtionClicked += Resume;
+        _pauseWindow.RestartButtionClicked += Restart;
+        _pauseWindow.ExitButtonClicked += Exit;
 
-        _endGameWindow.RestartButtonClicked += RestartGame;
-        _endGameWindow.ExitButtonClicked += ExitGame;
+        _endGameWindow.RestartButtonClicked += Restart;
+        _endGameWindow.ExitButtonClicked += Exit;
     }
 
     private void OnDisable()
@@ -36,14 +35,14 @@ public class GameStateHandler : MonoBehaviour
         _player.GameOver -= OpenEndGameWindow;
 
         _startWindow.StartButtonClicked -= StartGame;
-        _startWindow.ExitButtonClicked -= ExitGame;
+        _startWindow.ExitButtonClicked -= Exit;
 
-        _pauseWindow.ResumeButtionClicked -= ResumeGame;
-        _pauseWindow.RestartButtionClicked -= RestartGame;
-        _pauseWindow.ExitButtonClicked -= ExitGame;
+        _pauseWindow.ResumeButtionClicked -= Resume;
+        _pauseWindow.RestartButtionClicked -= Restart;
+        _pauseWindow.ExitButtonClicked -= Exit;
 
-        _endGameWindow.RestartButtonClicked -= RestartGame;
-        _endGameWindow.ExitButtonClicked -= ExitGame;
+        _endGameWindow.RestartButtonClicked -= Restart;
+        _endGameWindow.ExitButtonClicked -= Exit;
     }
 
     private void Update()
@@ -59,20 +58,20 @@ public class GameStateHandler : MonoBehaviour
         StartTime();
     }
 
-    private void ExitGame()
+    private void Exit()
     {
         Application.Quit();
 
         UnityEditor.EditorApplication.isPlaying = false; // “ŒÀ‹ Œ ƒÀﬂ »Ã»“¿÷»» ¬€’Œƒ¿ »« »√–€ ¬ –≈ƒ¿ “Œ–≈!!!
     }
 
-    private void ResumeGame()
+    private void Resume()
     {
         _pauseWindow.Close();
         StartTime();
     }
 
-    private void RestartGame(Window window)
+    private void Restart(Window window)
     {
         ResetObjects();
 
@@ -83,7 +82,6 @@ public class GameStateHandler : MonoBehaviour
     {
         _cleaner.Clear();
         _player.AllReset();
-        _score.ResetValue();
     }
 
     private void OpenEndGameWindow()
