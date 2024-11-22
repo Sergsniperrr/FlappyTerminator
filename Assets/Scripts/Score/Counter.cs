@@ -5,8 +5,8 @@ public class Counter : MonoBehaviour
 {
     [SerializeField] private EnemySpawner _spawner;
 
-    private readonly int pointsForMoveEnemy = 20;
-    private readonly int pointsForHitEnemy = 100;
+    private readonly int _pointsForMoveEnemy = 20;
+    private readonly int _pointsForHitEnemy = 100;
 
     private int _value;
 
@@ -31,7 +31,7 @@ public class Counter : MonoBehaviour
 
     private void AddPointsForMoveEnemy(Enemy enemy)
     {
-        _value += pointsForMoveEnemy;
+        _value += _pointsForMoveEnemy;
 
         ScoreChanged?.Invoke(_value);
 
@@ -40,7 +40,7 @@ public class Counter : MonoBehaviour
 
     private void AddPointsForHitEnemy(Enemy enemy)
     {
-        _value += pointsForHitEnemy;
+        _value += _pointsForHitEnemy;
 
         ScoreChanged?.Invoke(_value);
 

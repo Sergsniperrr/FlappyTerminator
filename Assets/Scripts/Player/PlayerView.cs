@@ -13,7 +13,7 @@ public class PlayerView : MonoBehaviour
         _animator = GetComponent<Animator>();
         _renderer = GetComponent<Renderer>();
 
-        _jet = Jet.GetJet(transform);
+        _jet = JetSearcher.GetOne(transform);
 
         Hide();
     }
@@ -21,7 +21,7 @@ public class PlayerView : MonoBehaviour
     public void ShowExplosion()
     {
         _jet.Hide();
-        _animator.Play(AnimationData.s_explosion);
+        _animator.Play(AnimationData.s_Explosion);
     }
 
     public void Hide()
@@ -33,7 +33,7 @@ public class PlayerView : MonoBehaviour
     public void Show()
     {
         _renderer.enabled = true;
-        _animator.Play(AnimationData.s_idle);
+        _animator.Play(AnimationData.s_Idle);
         _jet.Show();
     }
 }

@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
             spawnPoint.y = UnityEngine.Random.Range(_minCoordinateY, _maxCoordinateY);
             Enemy enemy = _pool.GetObject(spawnPoint);
 
-            Jet[] jets = Jet.GetJets(enemy.transform);
+            Jet[] jets = JetSearcher.GetFew(enemy.transform);
 
             foreach (Jet jet in jets)
                 jet.Show();

@@ -4,7 +4,6 @@ public class GameStateHandler : MonoBehaviour
 {
     [SerializeField] private StartWindow _startWindow;
     [SerializeField] private PauseWindow _pauseWindow;
-    [SerializeField] private EndGameWindow _endGameWindow;
 
     [SerializeField] private Reset _cleaner;
     [SerializeField] private Player _player;
@@ -23,11 +22,8 @@ public class GameStateHandler : MonoBehaviour
         _startWindow.ExitButtonClicked += Exit;
 
         _pauseWindow.ResumeButtionClicked += Resume;
-        _pauseWindow.RestartButtionClicked += Restart;
+        _pauseWindow.StartButtonClicked += StartGame;
         _pauseWindow.ExitButtonClicked += Exit;
-
-        _endGameWindow.RestartButtonClicked += Restart;
-        _endGameWindow.ExitButtonClicked += Exit;
     }
 
     private void OnDisable()
@@ -38,11 +34,8 @@ public class GameStateHandler : MonoBehaviour
         _startWindow.ExitButtonClicked -= Exit;
 
         _pauseWindow.ResumeButtionClicked -= Resume;
-        _pauseWindow.RestartButtionClicked -= Restart;
+        _pauseWindow.StartButtonClicked -= StartGame;
         _pauseWindow.ExitButtonClicked -= Exit;
-
-        _endGameWindow.RestartButtonClicked -= Restart;
-        _endGameWindow.ExitButtonClicked -= Exit;
     }
 
     private void Update()
@@ -51,8 +44,10 @@ public class GameStateHandler : MonoBehaviour
             OpenPauseWindow();
     }
 
-    private void StartGame(Window window)
+    private void StartGame(StartWindow window)
     {
+        ResetObjects();
+
         window.Close();
         _player.Show();
         StartTime();
@@ -71,13 +66,6 @@ public class GameStateHandler : MonoBehaviour
         StartTime();
     }
 
-    private void Restart(Window window)
-    {
-        ResetObjects();
-
-        StartGame(window);
-    }
-
     private void ResetObjects()
     {
         _cleaner.Clear();
@@ -87,7 +75,7 @@ public class GameStateHandler : MonoBehaviour
     private void OpenEndGameWindow()
     {
         StopTime();
-        _endGameWindow.Open();
+        _startWindow.Open();
     }
 
     private void OpenPauseWindow()

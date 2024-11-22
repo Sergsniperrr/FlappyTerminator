@@ -24,7 +24,7 @@ public class Enemy : SpawnableObject<Enemy>
 
         _animator = GetComponent<Animator>();
 
-        _jets = Jet.GetJets(transform);
+        _jets = JetSearcher.GetFew(transform);
     }
 
     private void OnEnable()
@@ -60,7 +60,7 @@ public class Enemy : SpawnableObject<Enemy>
         foreach (Jet jet in _jets)
             jet.Hide();
 
-        _animator.Play(AnimationData.s_explosion);
+        _animator.Play(AnimationData.s_Explosion);
 
         yield return waitForExplosion;
 
@@ -72,7 +72,7 @@ public class Enemy : SpawnableObject<Enemy>
         float delay = 0.7f;
         var waitForShowScore = new WaitForSeconds(delay);
 
-        _animator.Play(AnimationData.s_score100);
+        _animator.Play(AnimationData.s_Score100);
 
         yield return waitForShowScore;
 
