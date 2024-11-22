@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerView _view;
     [SerializeField] private PlayerMover _mover;
 
-    public event Action GameOver;
+    public event Action Died;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -50,6 +50,6 @@ public class Player : MonoBehaviour
 
         _view.Hide();
 
-        GameOver?.Invoke();
+        Died?.Invoke();
     }
 }

@@ -5,7 +5,6 @@ public static class JetSearcher
 {
     public static Jet[] GetFew(Transform parent)
     {
-//        Transform[] childTransforms = parent.GetComponentsInChildren<Transform>();
         List<Jet> result = new();
 
         foreach (Transform childTransform in parent)

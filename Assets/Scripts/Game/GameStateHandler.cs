@@ -16,7 +16,7 @@ public class GameStateHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.GameOver += OpenEndGameWindow;
+        _player.Died += OpenEndGameWindow;
 
         _startWindow.StartButtonClicked += StartGame;
         _startWindow.ExitButtonClicked += Exit;
@@ -28,7 +28,7 @@ public class GameStateHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        _player.GameOver -= OpenEndGameWindow;
+        _player.Died -= OpenEndGameWindow;
 
         _startWindow.StartButtonClicked -= StartGame;
         _startWindow.ExitButtonClicked -= Exit;
